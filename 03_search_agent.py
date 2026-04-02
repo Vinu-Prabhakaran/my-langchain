@@ -31,7 +31,7 @@ tools = [search]
 agent = create_agent(model=llm,tools=tools)
 
 def main():
-    result = agent.invoke({"messages":HumanMessage(content="What is the weather in Kochi?")})
+    result = agent.invoke({"messages":HumanMessage(content="search for 3 job postings for an ai engineer using langchain in the Miami    area on linkedin and list their details?")})
     print(result)
 
 if __name__ == "__main__":
