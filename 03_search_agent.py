@@ -3,9 +3,11 @@ from langchain_openrouter import ChatOpenRouter
 from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from langchain.tools import tool
-import os
+from tavily import TavilyClient
 
 load_dotenv()
+
+tavily = TavilyClient()
 
 @tool
 def search(query:str) -> str:
@@ -17,7 +19,7 @@ def search(query:str) -> str:
         The search result
     """
     print(f'Searching for {query}')
-    return ("Weather in Kochi is humid")    
+    return tavily.search(query)
 
 llm = ChatOpenRouter(
         model="nvidia/nemotron-nano-12b-v2-vl:free",
