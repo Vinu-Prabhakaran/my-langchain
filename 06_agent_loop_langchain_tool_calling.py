@@ -41,7 +41,7 @@ def apply_discount(price: float, discount_tier: str) -> float:
 @traceable(name="Agent Loop with Tool Calling")
 def run_agent(query: str):
     tools = [get_product_price, apply_discount]
-    tool_dict = {t.name:t for t in tools}
+    tool_dict = {t.name:t for t in tools} # t.name from @tool decorator is used to create a mapping of tool names to functions for easy lookup when the agent calls tools by name.
     llm = init_chat_model(MODEL,temperature=0)
     llm_with_tools = llm.bind_tools(tools=tools)
 

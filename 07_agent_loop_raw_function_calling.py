@@ -6,7 +6,6 @@ from langsmith import traceable
 MAX_ITERATIONS = 10
 MODEL = 'nvidia/nemotron-3-super-120b-a12b:free'
 # MODEL = 'openrouter:nvidia/nemotron-nano-12b-v2-vl:free'
-# MODEL = 'google_genai:gemini-2.5-flash'
 
 load_dotenv()
 
@@ -81,9 +80,9 @@ tools_for_llm = [
     },
 ]
 
-# --- Helper: traced Ollama call ---
+# --- Helper: traced OpenAI call ---
 # Difference 3: Without LangChain, we must manually trace LLM calls for LangSmith.
-@traceable(name="Ollama Chat", run_type="llm")
+@traceable(name="OpenAI Chat", run_type="llm")
 def openai_chat_traced(request):
     return openai_client.chat.completions.create(**request)
 
